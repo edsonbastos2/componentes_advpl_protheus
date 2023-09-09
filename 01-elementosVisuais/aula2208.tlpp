@@ -1,0 +1,29 @@
+#include 'totvs.ch'
+#include "protheus.ch"
+
+
+user function aula2208()
+    local nNota1 as numeric
+    local nNota2 as numeric
+
+    nNota1 := val(FwInputBox("Digite sua primeira nota"))
+    nNota2 := val(FwInputBox("Digite sua segunda nota"))
+
+    media(nNota1, nNota2)
+return
+
+
+static function media(n1, n2)
+    local nResult as numeric
+    nResult := (n1 + n2) / 2
+
+    MsgInfo("A média é: " + cvalTochar(nResult) + " Média da prova ")
+
+    if nResult <= 5
+        alert('Aluno reprovado')
+    elseif nResult <= 7
+        alert("Aluno de exame")
+    else 
+        MsgInfo("Aluno aprovado", "Parabéns Aluno!")
+    endif
+return

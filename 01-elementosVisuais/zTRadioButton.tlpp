@@ -1,0 +1,27 @@
+#include 'totvs.ch'
+#include "protheus.ch"
+
+/*/{Protheus.doc} zTRadioButton
+Tela de exemplo de utilização do Radiomenu
+@type function
+@version 1.0.0
+@author edson
+@since 9/9/2023
+@return
+@see https://tdn.totvs.com/display/tec/TRadMenu
+/*/
+user function zTRadmenu()
+local oDlg1
+local oRadio
+local aItems := {'Masculino', 'Femenino', 'Tods'}
+local nOpcao := 1
+local oBtn
+
+oDlg1 := TDialog():New(0,0,500,500,'Exemplo de Radio Button',,,,, CLR_BLACK, CLR_WHITE,,, .T.)
+oRadio := TRadMenu():New (010,010,aItems,{|u| IIF(PCount()>0,nOpcao :=u,nOpcao)},oDlg1,,,,,,,,100,12,,,,.T.)
+oBtn := TButton():New(70 , 10 , "Exibir valor", oDlg1, {|| MsgInfo(aItems[nOpcao],'você escolheu')}, 60, 15, , ,.F., .T., .F.,, .F., , , .F.)
+
+oDlg1:Activate(,,,.T.)
+
+
+return

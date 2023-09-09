@@ -1,0 +1,25 @@
+#include 'totvs.ch'
+#include "protheus.ch"
+
+
+User function zTSay()
+local oSay1
+local oDg11
+local oButton1
+local oClientte
+local oFornecedor
+local oBancos
+local oProdutos
+local oClose
+
+oDg11       := TDialog():New(180, 180, 550                        , 700  , 'Cadastro de Usuário'         ,   ,   , , , CLR_BLACK, CLR_WHITE,          ,    , .T.)
+oSay1 := TSay():New(05,50,{||'Tela de cadastro'},oDg11,,,,,,.T.,CLR_RED,CLR_WHITE,200,20)
+oButton1    := TButton():New(20 , 50 , "Deu certo"                , oDg11, {|| Alert("Ola Protheuzeiro")}, 40, 10, , , .F.      , .T.      , .F.      ,    , .F., , , .F.)
+oClientte   := TButton():New(40 , 50 , "Clientes"                 , oDg11, {|| Mata030()}                , 40, 10, , , .F.      , .T.      , .F.      ,    , .F., , , .F.)
+oFornecedor := TButton():New(60 , 50 , "Fornecedores"             , oDg11, {|| Mata020()}                , 40, 10, , , .F.      , .T.      , .F.      ,    , .F., , , .F.)
+oBancos     := TButton():New(80 , 50 , "Bancos"                   , oDg11, {|| Mata070()}                , 40, 10, , , .F.      , .T.      , .F.      ,    , .F., , , .F.)
+oProdutos   := TButton():New(100, 50 , "Produtos"                 , oDg11, {|| Mata010()}                , 40, 10, , , .F.      , .T.      , .F.      ,    , .F., , , .F.)
+oClose      := TButton():New(120, 50 , "Fechar"                   , oDg11, {|| oDg11:end()}              , 40, 10, , , .F.      , .T.      , .F.      ,    , .F., , , .F.)
+oDg11:Activate(,,,)
+
+return

@@ -1,0 +1,58 @@
+#include 'totvs.ch'
+#include "protheus.ch"
+
+User function zTBloq()
+local oDlg1
+local oSay1, oSay2
+local oButton1
+local oButton2
+
+local cGet1 := Space(6)
+local cGet2 := Space(2)
+
+local oGet1, oGet2
+
+oDlg1 := TDialog():New(0,0,200,500,'Bloqueador de clientes',,,,, CLR_BLACK, CLR_WHITE,,, .T.)
+oSay1 := TSay():New(10,10,{||'Cliente'},oDlg1,,,,,,.T.,CLR_BLUE,CLR_WHITE,200,20)
+oGet1 := TGet():New(20,10,{|u|if(PCount()>0,cGet1:=u,cGet1)},oDlg1,40,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet1,,,, )
+oGet1:cF3 := "SA1"
+
+oSay2 := TSay():New(10,60,{||'Loja'},oDlg1,,,,,,.T.,CLR_BLUE,CLR_WHITE,200,20)
+oGet2 := TGet():New(20,60,{|u|if(PCount()>0,cGet2:=u,cGet2)},oDlg1,30,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet2,,,, )
+
+oButton1 := TButton():New(60 , 10 , "Bloquear cliente", oDlg1, {|| fbloq(cGet1, cGet2)}, 60, 15, , ,.F., .T., .F.,, .F., , , .F.)
+oButton2 := TButton():New(60 , 80 , "Desbloquear cliente", oDlg1, {|| fDesbloq(cGet1, cGet2)}, 60, 15, , ,.F., .T., .F.,, .F., , , .F.)
+
+oDlg1:Activate(,,,.T.)
+
+return
+
+static function fbloq(codigo, loja)
+
+DbSelectArea("SA1")
+SA1->(DbSeek(xFilial("SA1")+codigo+loja)) //procura o cliente e aloja que estão dentro dos GETS
+
+RecLock("SA1",.F.) // usa-se tru, para inclusão e false para edição/alteração
+
+    SA1->A1_MSBLQL := '1'
+
+MsUnlock()
+
+MsgInfo("O cliente com código "+codigo+" esta sendo bloqueado!", "Atenção")
+
+return
+
+static function fDesbloq(codigo, loja)
+
+DbSelectArea("SA1")
+SA1->(DbSeek(xFilial("SA1")+codigo+loja)) //procura o cliente e aloja que estão dentro dos GETS
+
+RecLock("SA1",.F.) // usa-se tru, para inclusão e false para edição/alteração
+
+    SA1->A1_MSBLQL := '2'
+
+MsUnlock()
+
+MsgInfo("O cliente com código "+codigo+" esta sendo desbloqueado!", "Atenção")
+
+return

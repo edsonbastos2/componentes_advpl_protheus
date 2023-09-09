@@ -1,0 +1,21 @@
+#include "totvs.ch"
+#include "protheus.ch"
+
+
+user function zTPainel()
+local oDlg1
+local oGet1
+local oPanel
+local oSay1
+local cGet1 := Space(30)
+
+oDlg1 := TDialog():New(0, 0, 300, 300  , 'Cadastro de Usuário',,,,,CLR_BLACK, CLR_WHITE,,, .T.)
+
+oPanel:= tPanel():New(010,010,"Teste",oDlg1,,.T.,,CLR_YELLOW,CLR_BLUE,100,100)
+
+oSay1 := TSay():New(10,10,{||'Digite seu nome'},oPanel,,,,,,.T.,CLR_WHITE,CLR_WHITE,200,20)
+
+oGet1 := TGet():New( 20,10,{|u|if(PCount()>0,cGet1:=u,cGet1)},oPanel,60,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet1,,,, )
+
+oDlg1:ACTIVATE(,,,.T.)
+return

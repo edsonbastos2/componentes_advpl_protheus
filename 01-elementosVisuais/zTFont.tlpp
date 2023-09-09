@@ -1,0 +1,30 @@
+#include 'totvs.ch'
+#include "protheus.ch"
+
+
+/*/{Protheus.doc} zTFont
+metodo para realizar testes de fontes
+@type function
+@version  1.0.0
+@author edson
+@since 8/16/2023
+@see https://tdn.totvs.com/display/tec/TFont%3ANew
+@see https://tdn.totvs.com/display/tec/Construtor+TSay%3ANew
+@see https://tdn.totvs.com/display/tec/Construtor+TButton%3ANew
+@see https://tdn.totvs.com/display/tec/Construtor+TDialog%3ANew
+/*/
+User function zTFont()
+local oDgl1
+local oFont1
+local oFont2
+local oBtn
+local oSay1
+
+oFont1 := TFont():New('Courier new',,16,,.F.,,,,,.F.,.F.,)
+oFont2 := TFont():New('Arial Black',,20,,.T.,,,,,.F.,.F.,)
+oDgl1       := TDialog():New(180, 180, 550                        , 700  , 'Tela de teste de Fonte'         ,   ,   , , , CLR_BLACK, CLR_WHITE,          ,    , .T.)
+oSay1 := TSay():New(05,50,{||'Tela de Fontes'},oDgl1,,oFont2,,,,.T.,CLR_RED,CLR_WHITE,200,20)
+oBtn := TButton():New( 002, 002, "Teste btn",oDgl1,{||alert("Botão 01")}, 40,10,,oFont1,.F.,.T.,.F.,,.F.,,,.F. )
+
+oDgl1:Activate(,,,)
+return

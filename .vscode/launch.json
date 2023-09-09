@@ -1,0 +1,48 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "totvs_language_debug",
+			"request": "launch",
+			"name": "TOTVS Language Debug",
+			"program": "${command:AskForProgramName}",
+			"cwb": "${workspaceFolder}",
+			"smartclientBin": "C:\\TOTVS12133\\Protheus\\Protheus\\bin\\smartclient\\smartclient.exe",
+			"isMultiSession": true,
+			"enableTableSync": true
+		}
+	],
+	"lastPrograms": [
+		{
+			"label": "admin"
+		},
+		{
+			"label": "u_zTDialog"
+		},
+		{
+			"label": "u_zTSay"
+		},
+		{
+			"label": "u_zTFont"
+		},
+		{
+			"label": "u_zTGroup"
+		},
+		{
+			"label": "u_zTPanel"
+		},
+		{
+			"label": "u_zTPainel"
+		},
+		{
+			"label": "u_zTFolder"
+		},
+		{
+			"label": "u_zTRadionButton"
+		},
+		{
+			"label": "u_zTRadmenu"
+		}
+	],
+	"lastProgramExecuted": "u_zTRadmenu"
+}

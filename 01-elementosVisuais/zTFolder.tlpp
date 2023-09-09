@@ -1,0 +1,45 @@
+#include "totvs.ch"
+#include "protheus.ch"
+
+user function zTFolder()
+local oDlg1
+local oFolder
+local aFolder
+
+local oSay1
+local oSay2
+local oSay3
+local oButton1, oButton2, oButton3
+
+local cGet1, cGet2, cGet3
+local oGet1, oGet2, oGet3
+
+oDlg1 := TDialog():New(0,0,300, 400,'Painel com abas',,,,,CLR_BLACK, CLR_WHITE,,, .T.)
+
+aFolder := {"Aba01", "Aba02", "Aba03", "Aba04"}
+
+oFolder := TFolder():New( 0,0,aFolder,aFolder,oDlg1,,,,.T.,,200,200 )
+
+oSay1 := TSay():New(1,10,{||'Nome da Aba01'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,200,20)
+cGet1 := Space(30)
+oGet1 := TGet():New(10,10,{|u|if(PCount()>0,cGet1:=u,cGet1)},oFolder:aDialogs[1],100,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet1,,,, )
+oButton1 := TButton():New(25 , 10 , "Executando aba 01", oFolder:aDialogs[1], {|| MsgInfo(cGet1, "Conteúdo Digitado")}, 60, 15, , ,.F., .T., .F.,, .F., , , .F.)
+
+
+oSay2 := TSay():New(1,10,{||'Nome da Aba02'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,200,20)
+cGet2 := Space(30)
+oGet2 := TGet():New(10,10,{|u|if(PCount()>0,cGet2:=u,cGet2)},oFolder:aDialogs[2],100,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet2,,,, )
+oButton2 := TButton():New(25 , 10 , "Executando aba 02", oFolder:aDialogs[2], {|| MsgInfo(cGet2, "Conteúdo Digitado")}, 60, 15, , ,.F., .T., .F.,, .F., , , .F.)
+
+
+oSay3 := TSay():New(1,10,{||'Nome da Aba03'},oFolder:aDialogs[3],,,,,,.T.,CLR_BLUE,CLR_WHITE,200,20)
+cGet3 := Space(30)
+oGet3 := TGet():New(10,10,{|u|if(PCount()>0,cGet3:=u,cGet3)},oFolder:aDialogs[3],100,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet3,,,, )
+oButton3 := TButton():New(25 , 10 , "Executando aba 03", oFolder:aDialogs[3], {|| MsgInfo(cGet3, "Conteúdo Digitado")}, 60, 15, , ,.F., .T., .F.,, .F., , , .F.)
+
+
+
+
+oDlg1:ACTIVATE(,,,.T.)
+
+return
