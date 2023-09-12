@@ -13,14 +13,19 @@ Tela de exemplo de utilização do Radiomenu
 user function zTRadmenu()
 local oDlg1
 local oRadio
-local aItems := {'Masculino', 'Femenino', 'Tods'}
+local aItems := {'Masculino', 'Femenino', 'Outros'}
+local oPcoes := {'Fortaleza', 'Ceará','Ferroviario'}
 local nOpcao := 1
+local nOpcao2 := oPcoes[2]
 local oBtn
+local oCombo1
 
 oDlg1 := TDialog():New(0,0,500,500,'Exemplo de Radio Button',,,,, CLR_BLACK, CLR_WHITE,,, .T.)
 oRadio := TRadMenu():New (010,010,aItems,{|u| IIF(PCount()>0,nOpcao :=u,nOpcao)},oDlg1,,,,,,,,100,12,,,,.T.)
 oBtn := TButton():New(70 , 10 , "Exibir valor", oDlg1, {|| MsgInfo(aItems[nOpcao],'você escolheu')}, 60, 15, , ,.F., .T., .F.,, .F., , , .F.)
-
+oCombo1 := TComboBox():New(90,10,{|u|if(PCount()>0,nOpcao2:=u,nOpcao2)},;
+        oPcoes,100,20,oDlg1,,{||MSGSTOP('Mudou para o item ' + nOpcao2)};
+        ,,,,.T.,,,,,,,,,'cCombo1')
 oDlg1:Activate(,,,.T.)
 
 

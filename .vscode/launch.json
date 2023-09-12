@@ -42,7 +42,10 @@
 		},
 		{
 			"label": "u_zTRadmenu"
+		},
+		{
+			"label": "u_zTCombo"
 		}
 	],
-	"lastProgramExecuted": "u_zTRadmenu"
+	"lastProgramExecuted": "u_zTCombo"
 }
