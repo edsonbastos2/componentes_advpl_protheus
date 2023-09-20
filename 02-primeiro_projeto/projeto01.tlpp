@@ -1,0 +1,49 @@
+#include 'totvs.ch'
+#include "protheus.ch"
+
+
+User Function Projeto01()
+Private oDlg1
+Private cTituloJanela := "PROJETO01 - Primeira tela em ADVPL Protheus"
+
+
+Private oFolder
+Private aFolder
+
+
+// Variáveis referentes aos objetos do folder dados pessoais
+Private oSayNome
+Private oGetNome
+Private cGetNome
+
+Private oSayNomeReduzido
+Private oGetNomeReduzido
+Private cGetNomeReduzido
+
+Private oSayDatNasc
+Private oGetDatNasc
+Private dGetDatNasc
+
+// Variáveis referentes aos objetos do folder dados endereço
+// Variáveis referentes aos objetos do folder dados outros
+
+oDlg1 := TDialog():New(0,0,720,1280,cTituloJanela,,,,, CLR_BLACK, CLR_WHITE,,,.T.)
+
+aFolder := {'Dados Pessoais', 'Endereço', 'Outros'}
+oFolder := TFolder():New(0,0,aFolder,aFolder,oDlg1,,,,.T.,,600,200)
+
+oSayNome := TSay():New(01,05,{||'Nome'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetNome := Space(30)
+oGetNome := TGet():New(10,05,{|u|IIF(PCount()>0,cGetNome:=u,cGetNome)},oFolder:aDialogs[1],096,009,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetNome,,,, )
+
+oSayNomeReduzido := TSay():New(01,110,{||'Nome Reduzido'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetNomeReduzido := Space(30)
+oGetNomeReduzido := TGet():New(10,110,{|u|IIF(PCount()>0,cGetNomeReduzido:=u,cGetNomeReduzido)},oFolder:aDialogs[1],096,009,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetNomeReduzido,,,, )
+
+oSayDatNasc := TSay():New(01,210,{||'Data de Nascimento'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+dGetDatNasc := Date()
+oGetDatNasc := TGet():New(10,210,{|u|IIF(PCount()>0,dGetDatNasc:=u,dGetDatNasc)},oFolder:aDialogs[1],096,009,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,/**/,,,,.T.)
+
+oDlg1:ACTIVATE(,,,.T.)
+
+return

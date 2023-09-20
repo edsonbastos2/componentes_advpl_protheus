@@ -51,7 +51,10 @@
 		},
 		{
 			"label": "u_ProtheuzeiroExec"
+		},
+		{
+			"label": "u_Projeto01"
 		}
 	],
-	"lastProgramExecuted": "u_ProtheuzeiroExec"
+	"lastProgramExecuted": "u_Projeto01"
 }
