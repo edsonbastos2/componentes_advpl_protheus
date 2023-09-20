@@ -1,0 +1,46 @@
+#include 'totvs.ch'
+#include "protheus.ch"
+
+
+user function zTCheckbox()
+local oDlg1
+
+local ocheck1
+
+local ocheck2
+local oButton1
+local oButton2
+private lcheck2 := .F.
+Private  lcheck1 := .F.
+
+
+oDlg1 := TDialog():New(0,0,500,500,'Exemplo de ListBox',,,,, CLR_BLACK, CLR_WHITE,,, .T.)
+oButton1 := TButton():New(10 ,10,"Mostrar status",oDlg1, {|| verifystatus()}, 60, 15, , ,.F., .T., .F.,, .F., , , .F.)
+oButton2 := TButton():New(10 ,70,'Toggle',oDlg1, {|| Toggle()}, 60, 15, , ,.F., .T., .F.,, .F., , , .F.)
+ocheck1 := TCheckBox():New(30,10,'CheckBox 001',{||lcheck1},oDlg1,100,210,,{|| lcheck1 := !lcheck1, IIF( lcheck1,;
+MsgInfo('está marcado','status'), MsgInfo('está desmarcado','status') ) },,,,,,.T.,,,)
+ocheck2 := TCheckBox():New(40,10,'CheckBox 002',{||lcheck2},oDlg1,100,210,,{|| lcheck2 := !lcheck2,;
+IIF( lcheck2, MsgInfo('esta marcado','status'), MsgInfo('esta desmarcado','status') ) },,,,,,.T.,,,)
+
+oDlg1:ACTIVATE(,,,.T.)
+
+return
+
+
+
+Static Function verifystatus()
+    if lcheck1 .And. !lcheck2
+        MsgInfo('Somente o check1 esta marcado')
+    elseif !lcheck1 .And. lcheck2
+        MsgInfo('Somente o check2 esta marcado')
+    elseif lcheck1 .And. lcheck2 
+        MsgInfo('Todos os checkes estão marcados')
+    else 
+        MsgInfo('Todos estão desmarcados')
+    endif
+Return
+
+Static Function Toggle()
+    lcheck1 := !lcheck1
+    lcheck2 := !lcheck2
+Return

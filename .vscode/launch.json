@@ -45,7 +45,13 @@
 		},
 		{
 			"label": "u_zTCombo"
+		},
+		{
+			"label": "u_zTCheckbox"
+		},
+		{
+			"label": "u_ProtheuzeiroExec"
 		}
 	],
-	"lastProgramExecuted": "u_zTCombo"
+	"lastProgramExecuted": "u_ProtheuzeiroExec"
 }

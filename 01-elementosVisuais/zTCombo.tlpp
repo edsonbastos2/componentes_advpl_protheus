@@ -14,15 +14,15 @@ user function zTCombo()
 local oDlg1
 local oPcoes := {'Fortaleza', 'Ceará','Ferroviario', 'Palmeiras'}
 local nOpcao := 1
-local oList
+local oList 
 local oBtn
 
 oDlg1 := TDialog():New(0,0,500,500,'Exemplo de ListBox',,,,, CLR_BLACK, CLR_WHITE,,, .T.)
 
-oList := TListBox():New(010,010,{|u|if(Pcount()>0,nOpcao:=u,nOpcao)},;
-                         oPcoes,100,100,,oDlg1,,,,.T.)
+oList := TListBox():New(010,010,{|u|if(Pcount()>0,nOpcao:=u,nOpcao)},oPcoes,70,100,,oDlg1,,,,.T.)
+oList:bChange := {||MsgInfo('mudou de item '+ oPcoes[nOpcao],' Escolha um time')}
 
-oBtn := TButton():New(170 , 10 , "Exibir valor", oDlg1, {|| MsgInfo(' Você torce para o '+oPcoes[nOpcao],'você escolheu')}, 60, 15, , ,.F., .T., .F.,, .F., , , .F.)
+oBtn := TButton():New(120 , 10 , "Exibir valor", oDlg1, {|| MsgInfo(' Você torce para o '+oPcoes[nOpcao],'você escolheu')}, 70, 15, , ,.F., .T., .F.,, .F., , , .F.)
 oDlg1:Activate(,,,.T.)
 
 
