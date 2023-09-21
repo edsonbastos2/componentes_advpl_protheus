@@ -42,12 +42,32 @@ Private cGetCPF
 Private oGetCPF
 
 // Variáveis referentes aos objetos do folder dados endereço
+
+Private oSayEndereco
+Private cGetEndereco
+Private oGetEndereco
+
+Private oSayBairro
+Private cGetBairro
+Private oGetBairro
+
+Private oSayImovel
+Private aImoveis := {'Casa', 'Apartamento', 'Outros'}
+Private cImovel := aImoveis[1]
+Private oComboImovel
+
+Private oSayCep
+Private cGetCep
+Private oGetCep
+
 // Variáveis referentes aos objetos do folder dados outros
 
 oDlg1 := TDialog():New(0,0,720,1280,cTituloJanela,,,,, CLR_BLACK, CLR_WHITE,,,.T.)
 
 aFolder := {'Dados Pessoais', 'Endereço', 'Outros'}
 oFolder := TFolder():New(0,0,aFolder,aFolder,oDlg1,,,,.T.,,600,200)
+
+// elementos visuais da aba Dados Pessoais
 
 oSayNome := TSay():New(01,05,{||'Nome'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
 cGetNome := Space(30)
@@ -76,7 +96,24 @@ oSayCPF := TSay():New(30,05,{||'CPF'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_
 cGetCPF := Space(14)
 oGetCPF := TGet():New(40,05,{|u|IIF(PCount()>0,cGetCPF:=u,cGetCPF)},oFolder:aDialogs[1],096,009,"@E 999.999.999-99",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetCPF,,,,.T.)
 
+// Fim elementos visuais da aba Dados Pessoais
 
+// elementos visuais da aba Endereço
+oSayEndereco := TSay():New(01,05,{||'Endereço'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetEndereco := Space(30)
+oGetEndereco := TGet():New(10,05,{|u|IIF(PCount()>0,cGetEndereco:=u,cGetEndereco)},oFolder:aDialogs[2],096,009,"@E!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetEndereco,,,,.T.)
+
+oSayBairro := TSay():New(01,110,{||'Bairro'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetBairro := Space(30)
+oGetBairro := TGet():New(10,110,{|u|IIF(PCount()>0,cGetBairro:=u,cGetBairro)},oFolder:aDialogs[2],096,009,"@E!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetBairro,,,,.T.)
+
+oSayImovel := TSay():New(01,220,{||'Tipo de Imóvel'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+oComboImovel := TComboBox():New(010,220,{|u|if(PCount()>0,cImovel:=u,cImovel)},;
+        aImoveis,50,20,oFolder:aDialogs[2],,,,,,.T.,,,,,,,,,'cImovel')
+
+oSayCep := TSay():New(01,290,{||'CEP'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetCep := Space(9)
+oGetCep := TGet():New(10,290,{|u|IIF(PCount()>0,cGetCep:=u,cGetCep)},oFolder:aDialogs[2],30,009,"@E 99999-999",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetCep,,,,.T.)
 
 
 oDlg1:ACTIVATE(,,,.T.)
