@@ -24,6 +24,23 @@ Private oSayDatNasc
 Private oGetDatNasc
 Private dGetDatNasc
 
+Private oSayCel
+Private cGetCel
+Private oGetCel
+
+Private oSayDDDCel
+Private cGetDDDCel
+Private oGetDDDCel
+
+Private oGroup
+Private oRadio
+Private oPcoes := {'Masculino', 'Femenino'}
+Private nOpcao := 1
+
+Private oSayCPF
+Private cGetCPF
+Private oGetCPF
+
 // Variáveis referentes aos objetos do folder dados endereço
 // Variáveis referentes aos objetos do folder dados outros
 
@@ -43,6 +60,24 @@ oGetNomeReduzido := TGet():New(10,110,{|u|IIF(PCount()>0,cGetNomeReduzido:=u,cGe
 oSayDatNasc := TSay():New(01,210,{||'Data de Nascimento'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
 dGetDatNasc := Date()
 oGetDatNasc := TGet():New(10,210,{|u|IIF(PCount()>0,dGetDatNasc:=u,dGetDatNasc)},oFolder:aDialogs[1],096,009,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,/**/,,,,.T.)
+
+oSayDDDCel := TSay():New(01,320,{||'DDD'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetDDDCel := Space(4)
+oGetDDDCel := TGet():New(10,320,{|u|IIF(PCount()>0,cGetDDDCel:=u,cGetDDDCel)},oFolder:aDialogs[1],20,009,"@E (99)",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetDDDCel,,,,.T.)
+
+oSayCel := TSay():New(01,350,{||'WhatsApp'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetCel := Space(11)
+oGetCel := TGet():New(10,350,{|u|IIF(PCount()>0,cGetCel:=u,cGetCel)},oFolder:aDialogs[1],40,009,"@E 9-9999-9999",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetCel,,,,.T.)
+
+oGroup := TGroup():New(01,400,50,580,'Sexo',oFolder:aDialogs[1],,,.T.)
+oRadio := TRadMenu():New (010,420,oPcoes,{|u| IIF(PCount()>0,nOpcao :=u,nOpcao)},oFolder:aDialogs[1],,,,,,,,60,20,,,,.T.)
+
+oSayCPF := TSay():New(30,05,{||'CPF'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetCPF := Space(14)
+oGetCPF := TGet():New(40,05,{|u|IIF(PCount()>0,cGetCPF:=u,cGetCPF)},oFolder:aDialogs[1],096,009,"@E 999.999.999-99",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetCPF,,,,.T.)
+
+
+
 
 oDlg1:ACTIVATE(,,,.T.)
 
