@@ -60,6 +60,38 @@ Private oSayCep
 Private cGetCep
 Private oGetCep
 
+Private oSayEstados
+Private aEstados := {'AC', 'AL', 'AM', 'AP', 'BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RR','SC','SE','SP','TO'}
+Private cEstados := aEstados[6]
+Private oComboEstados
+
+Private oSayCidade
+Private cGetCidade
+Private oGetCidade
+
+Private oSayEstCivil
+Private aEstCivil := {'Solteiro', 'Casado', 'Viúvo', 'Outros'}
+Private cEstCivil := aEstCivil[2]
+Private oComboEstCivil
+
+Private oGrouPet
+
+Private aPet := {'Sim', 'Não'}
+Private nPet := 2
+Private oRadioPet
+
+Private oGrouLinguagem
+
+Private oCheckAdvpl
+Private oCheckSql
+Private oCheckJava
+Private oCheckJavaScript
+
+Private lCheckAdvpl := .F.
+Private lCheckSql := .F.
+Private lCheckJava := .F.
+Private lCheckJavaScript := .F.
+
 // Variáveis referentes aos objetos do folder dados outros
 
 oDlg1 := TDialog():New(0,0,720,1280,cTituloJanela,,,,, CLR_BLACK, CLR_WHITE,,,.T.)
@@ -115,6 +147,31 @@ oSayCep := TSay():New(01,290,{||'CEP'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR
 cGetCep := Space(9)
 oGetCep := TGet():New(10,290,{|u|IIF(PCount()>0,cGetCep:=u,cGetCep)},oFolder:aDialogs[2],30,009,"@E 99999-999",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetCep,,,,.T.)
 
+oSayEstados := TSay():New(30,05,{||'Estados'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+oComboEstados := TComboBox():New(40,05,{|u|if(PCount()>0,cEstados:=u,cEstados)},;
+        aEstados,30,20,oFolder:aDialogs[2],,,,,,.T.,,,,,,,,,'cEstados')
+
+
+oSayCidade := TSay():New(30,40,{||'Cidade'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetCidade := Space(40)
+oGetCidade := TGet():New(40,40,{|u|IIF(PCount()>0,cGetCidade:=u,cGetCidade)},oFolder:aDialogs[2],60,009,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetCidade,,,,.T.)
+
+
+// elementos visuais da aba Outros
+oSayEstCivil := TSay():New(01,05,{||'Estado civil'},oFolder:aDialogs[3],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+oComboEstCivil := TComboBox():New(10,05,{|u|if(PCount()>0,cEstCivil:=u,cEstCivil)},;
+        aEstCivil,60,20,oFolder:aDialogs[3],,,,,,.T.,,,,,,,,,'cEstCivil')
+
+
+oGrouPet := TGroup():New(01,80,40,140,'Possui Pet?',oFolder:aDialogs[3],,,.T.)
+oRadioPet := TRadMenu():New (10,85,aPet,{|u| IIF(PCount()>0,nPet :=u,nPet)},oFolder:aDialogs[3],,,,,,,,30,20,,,,.T.)
+
+oGrouLinguagem := TGroup():New(01,150,55,240,'Linguagens que domina',oFolder:aDialogs[3],,,.T.)
+
+oCheckAdvpl := TCheckBox():New(10,160,'ADVPL',{||lCheckAdvpl},oFolder:aDialogs[3],100,210,,{|| lCheckAdvpl := !lCheckAdvpl},,,,,,.T.,,,)
+oCheckSql := TCheckBox():New(20,160,'SQL',{||lCheckSql},oFolder:aDialogs[3],100,210,,{|| lCheckSql := !lCheckSql},,,,,,.T.,,,)
+oCheckJava := TCheckBox():New(30,160,'JAVA',{||lCheckJava},oFolder:aDialogs[3],100,210,,{|| lCheckJava := !lCheckJava},,,,,,.T.,,,)
+oCheckJavaScript := TCheckBox():New(40,160,'JAVASCRIPT',{||lCheckJavaScript},oFolder:aDialogs[3],100,210,,{|| lCheckJavaScript := !lCheckJavaScript},,,,,,.T.,,,)
 
 oDlg1:ACTIVATE(,,,.T.)
 
